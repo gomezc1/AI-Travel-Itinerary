@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Travel Itinerary Planner</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Caveat:wght@600&display=swap" rel="stylesheet">
+
+</head>
+<body>
+  <div class="app">
+    <header>
+      <h1>AI Travel <span>Itinerary</span> Planner</h1>
+      <p>Plan your next road trip in seconds</p>
+    </header>
+
+    <div class="card">
+      <form id="trip-form">
+        <div class="field">
+          <label for="origin">What city does your trip start from?</label>
+          <input type="text" id="origin" name="origin" placeholder="e.g. Los Angeles" required />
+        </div>
+        <div class="field">
+          <label for="destination">What city is your trip going to?</label>
+          <input type="text" id="destination" name="destination" placeholder="e.g. San Francisco" required />
+        </div>
+        <div class="field">
+          <label for="duration">How many days will your trip last?</label>
+          <input type="number" id="duration" name="duration" min="1" placeholder="e.g. 5" required />
+        </div>
+        <button type="submit" class="btn" id="submit-btn">Generate Itinerary</button>
+        <p class="error" id="error-msg">Please make sure all fields are filled in correctly.</p>
+      </form>
+    </div>
+
+    <div class="weather-row">
+      <div class="weather-card" id="origin-weather">
+        <div class="city" id="origin-city">Origin</div>
+        <div class="temp" id="origin-temp">--°C</div>
+        <div class="condition" id="origin-condition">--</div>
+      </div>
+      <div class="weather-card" id="destination-weather">
+        <div class="city" id="destination-city">Destination</div>
+        <div class="temp" id="destination-temp">--°C</div>
+        <div class="condition" id="destination-condition">--</div>
+      </div>
+    </div>
+
+    <div class="loading" id="loading">Generating your itinerary... ✈️</div>
+
+    <div class="card itinerary" id="itinerary">
+      <h2>Your Itinerary</h2>
+      <div class="itinerary-content" id="itinerary-content"></div>
+    </div>
+
+    <footer id="credit">
+      Built by <strong>Crystal Gomez</strong> 
+    </footer>
+  </div>
+</body>
+</html>
