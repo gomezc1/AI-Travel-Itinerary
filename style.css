@@ -1,4 +1,3 @@
- <style>
     :root {
       --bg: #f4f1ea;
       --card-bg: #ffffff;
@@ -214,4 +213,3 @@
         grid-template-columns: 1fr;
       }
     }
-  </style>
