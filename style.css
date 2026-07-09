@@ -208,8 +208,54 @@
       color: var(--text);
     }
 
+
+    /* style.css */
+
+/* Main container styling */
+/* style.css */
+
+#result_output {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    min-height: 50px;
+}
+
+/* Styling the dynamic content injected by Python */
+#result_output h2 {
+    color: #2c3e50;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 10px;
+    margin-top: 0;
+}
+
+#result_output ul {
+    list-style-type: disc;
+    padding-left: 20px
+}
+
+#result_output li {
+    background: #ffffff;
+    margin-bottom: 10px;
+    padding: 15px;
+    border-left: 5px solid #007bff;
+    border-radius: 4px;
+    white-space: pre-wrap;
+}
+
+#result_output li strong {
+    color: #0056b3;
+}   
+
+
     @media (max-width: 480px) {
       .weather-row {
         grid-template-columns: 1fr;
       }
     }
+
