@@ -2,10 +2,10 @@
 #from rich import print
 #from rich.markdown import Markdown
 #from pyscript import Element, display
-from js import document 
+from js import document
 from pyodide.http import pyfetch
-import markdown 
-import sys
+import json
+#import markdown 
 
 
 def display_current_weather(location):
@@ -13,7 +13,7 @@ def display_current_weather(location):
   api_key = "133dfa996a9f3f03de4ad12bobb44eat"
   api_url = f"https://api.shecodes.io/weather/v1/current?query={location}&key={api_key}&units=metric"
 
-  response = pyfetch.get(api_url)
+  response = pyfetch(api_url)
   response_data = response.json()
 
   temperature = round(response_data['temperature']['current'])
@@ -37,6 +37,12 @@ async def generate_itinerary(event):
   response = await pyfetch(api_url)
   response_data = await response.json()
 
+    #result_text = response_data.get('response', str(response_data)) 
+   # document.getElementById("result_output").innerHTML = f"<pre>{result_text}</pre>"
+        
+  #except Exception as e:
+    #document.getElementById("result_output").innerHTML = f"Error: {str(e)}"
+
   keys_to_hide = {'prompt', 'context'}
 
   clean_data =  {
@@ -49,20 +55,26 @@ async def generate_itinerary(event):
   html_content = "<h2>Trip Details</h2><ul>"
 
   for key, value in clean_data.items():
-    if isinstance(value,list):
-      
-      items = "<br>".join(str(v) for v in value)
-      html_content += f"<li><b>{key.title()}:</b><br><br>{items}</li>"
+    if isinstance(value, list):
+        # Start nested list for sub-items
+        html_content += f"<li><b>{key.title()}:</b><ul>"
+        
+        for item in value:
+            # Add each sub-item as a nested <li>
+            html_content += f"<li>{item}</li>"
+        
+        # Close nested list and the main list item
+        html_content += "</ul></li>"
     else:
-      html_content += f"<li><b>{key.title()}:</b> {value}</li>"
+        # Standard single-line item
+        html_content += f"<li><b>{key.title()}:</b> {value}</li>"
 
   html_content += "</ul>"
 
+  document.getElementById("result_output").innerHTML = html_content   
+
 
   #itinerary = markdown.markdown(str(response_data))
-
-  #print(itinerary)
-  document.getElementById("result_output").innerHTML = html_content
 
 
 
