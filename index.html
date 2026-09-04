@@ -35,33 +35,15 @@
           <input type="number" id="duration" name="duration" min="1" placeholder="e.g. 5" required />
         </div>
         <button type="button" class="btn" id="submit-btn" py-click="generate_itinerary">Generate Itinerary</button>
-        <p class="error" id="error-msg">Please make sure all fields are filled in correctly.</p>
       </form>
     </div>
-
-    <div class="weather-row">
-      <div class="weather-card" id="origin-weather">
-        <div class="city" id="origin-city">Origin</div>
-        <div class="temp" id="origin-temp">--°C</div>
-        <div class="condition" id="origin-condition">--</div>
-      </div>
-      <div class="weather-card" id="destination-weather">
-        <div class="city" id="destination-city">Destination</div>
-        <div class="temp" id="destination-temp">--°C</div>
-        <div class="condition" id="destination-condition">--</div>
-      </div>
-    </div>
-
-    <div class="loading" id="loading">Generating your itinerary... ✈️</div>
 
     <div class="card itinerary" id="itinerary">
       <h2>Your Itinerary</h2>
       <div class="itinerary-content" id="itinerary-content"></div>
-      
     </div>
-    
-    <div id="result_output"></div>
 
+    <div id="result_output"></div>
 
     <footer id="credit">
       Built by <strong>Crystal Gomez</strong> 
