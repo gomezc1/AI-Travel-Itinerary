@@ -8,19 +8,6 @@ import json
 #import markdown 
 
 
-def display_current_weather(location):
-  """ Get the real time temperature and condition in a location """
-  api_key = "133dfa996a9f3f03de4ad12bobb44eat"
-  api_url = f"https://api.shecodes.io/weather/v1/current?query={location}&key={api_key}&units=metric"
-
-  response = pyfetch(api_url)
-  response_data = response.json()
-
-  temperature = round(response_data['temperature']['current'])
-  condition = response_data['condition']['description']
-
-  print(f"The current temperature in [bold]{location}[/bold] is [bold]{temperature}°C[/bold], {condition}.\n")
-
 async def generate_itinerary(event):
   origin = document.getElementById("origin").value
   destination = document.getElementById("destination").value
@@ -51,13 +38,12 @@ async def generate_itinerary(event):
     if key not in keys_to_hide
   }
 
-
   html_content = "<h2>Trip Details</h2><ul>"
 
   for key, value in clean_data.items():
     if isinstance(value, list):
         # Start nested list for sub-items
-        html_content += f"<li><b>{key.title()}:</b><ul>"
+        html_content += f"<li><strong>{key.title()}:</strong><ul>"
         
         for item in value:
             # Add each sub-item as a nested <li>
@@ -67,7 +53,7 @@ async def generate_itinerary(event):
         html_content += "</ul></li>"
     else:
         # Standard single-line item
-        html_content += f"<li><b>{key.title()}:</b> {value}</li>"
+        html_content += f"<li><strong>{key.title()}:</strong> {value}</li>"
 
   html_content += "</ul>"
 
@@ -75,30 +61,3 @@ async def generate_itinerary(event):
 
 
   #itinerary = markdown.markdown(str(response_data))
-
-
-
-def welcome():
-  """ Welcome message """
-  print("[bold yellow]Welcome to my AI Travel Itinerary Planner[/bold yellow]")
-
-
-def credit():
-  """ Credit message """
-  print("[yellow]The AI Travel Itinerary Planner was built by [bold]Crystal Gomez[/bold], thank you for using it 💖[/yellow]")
-
-
-welcome()
-
-# User inputs
-origin = document.getElementById("origin").value
-destination = document.getElementById("destination").value
-duration = document.getElementById("duration").value
-
-if origin and destination and duration.isdigit():
-  display_current_weather(origin)
-  display_current_weather(destination)
-  generate_itinerary(origin, destination, duration)
-  credit()
-else:
-  print("Please try again. Make sure you enter valid information")
