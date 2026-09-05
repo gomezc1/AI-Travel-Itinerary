@@ -58,6 +58,3 @@ async def generate_itinerary(event):
   html_content += "</ul>"
 
   document.getElementById("result_output").innerHTML = html_content   
-
-
-  #itinerary = markdown.markdown(str(response_data))
