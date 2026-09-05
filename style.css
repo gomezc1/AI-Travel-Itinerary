@@ -1,4 +1,4 @@
-    :root {
+     :root {
       --bg: #f4f1ea;
       --card-bg: #ffffff;
       --accent: #ff7a45;
@@ -7,10 +7,6 @@
       --muted: #7a7a7a;
       --border: #e6e1d6;
       --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-    }
-
-    * {
-      box-sizing: border-box;
     }
 
     body {
@@ -121,48 +117,6 @@
       display: none;
     }
 
-    .weather-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-      margin-bottom: 20px;
-    }
-
-    .weather-card {
-      background: var(--card-bg);
-      border-radius: 16px;
-      padding: 20px;
-      box-shadow: var(--shadow);
-      text-align: center;
-      display: none;
-    }
-
-    .weather-card.visible {
-      display: block;
-    }
-
-    .weather-card .city {
-      font-weight: 600;
-      font-size: 0.95rem;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.03em;
-      margin-bottom: 6px;
-    }
-
-    .weather-card .temp {
-      font-size: 2rem;
-      font-weight: 700;
-      color: var(--accent);
-      margin: 4px 0;
-    }
-
-    .weather-card .condition {
-      color: var(--muted);
-      font-size: 0.9rem;
-      text-transform: capitalize;
-    }
-
     .itinerary {
       display: none;
     }
@@ -208,8 +162,7 @@
       color: var(--text);
     }
 
-    /* style.css */
-
+/* style.css */
 /* Main container styling */
 /* style.css */
 
