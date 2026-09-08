@@ -1,13 +1,7 @@
-#import requests
-#from rich import print
-#from rich.markdown import Markdown
-#from pyscript import Element, display
 from js import document
 from pyodide.http import pyfetch
 import json
-#import markdown 
-
-
+ 
 async def generate_itinerary(event):
   origin = document.getElementById("origin").value
   destination = document.getElementById("destination").value
@@ -18,17 +12,11 @@ async def generate_itinerary(event):
 
 
   context = "You a travel specialist and know the best tourist spots around the world"
-  api_key = "133dfa996a9f3f03de4ad12bobb44eat"
-  api_url = f"https://api.shecodes.io/ai/v1/generate?prompt={prompt}&context={context}&key={api_key}"
+  api_key = ""
+  api_url = f""
 
   response = await pyfetch(api_url)
   response_data = await response.json()
-
-    #result_text = response_data.get('response', str(response_data)) 
-   # document.getElementById("result_output").innerHTML = f"<pre>{result_text}</pre>"
-        
-  #except Exception as e:
-    #document.getElementById("result_output").innerHTML = f"Error: {str(e)}"
 
   keys_to_hide = {'prompt', 'context'}
 
@@ -42,19 +30,19 @@ async def generate_itinerary(event):
 
   for key, value in clean_data.items():
     if isinstance(value, list):
-        # Start nested list for sub-items
+        
         html_content += f"<li><strong>{key.title()}:</strong><ul>"
         
         for item in value:
-            # Add each sub-item as a nested <li>
+            
             html_content += f"<li>{item}</li>"
         
-        # Close nested list and the main list item
+      
         html_content += "</ul></li>"
     else:
-        # Standard single-line item
+       
         html_content += f"<li><strong>{key.title()}:</strong> {value}</li>"
 
   html_content += "</ul>"
 
-  document.getElementById("result_output").innerHTML = html_content   
+  document.getElementById("result_output").innerHTML = html_content 
